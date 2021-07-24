@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "bloglang"
+description = "A parser for bloglang"
+authors = ["Bryan Hu <bryan.hu.2020@gmail.com>"]
+version = "0.1.0"
+
+readme = "README.md"
+license = "GPL-3.0-or-later"
+
+classifiers = [
+    # Get the list of trove classifiers here: https://pypi.org/classifiers/
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Natural Language :: English",
+]
+documentation = "https://bloglang.readthedocs.io/en/latest/index.html"
+homepage = "https://github.com/ThatXliner/bloglang"
+# keywords = ["awesome", "project"]  # Maximum of 5 keywords
+[tool.poetry.dependencies]
+python = "^3.7"
+attrs = "^21.2.0"
+pluggy = "^0.13.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^21.5b0"
+mypy = "^0.812"
+isort = "^5.8.0"
+pylint = "^2.8.2"
+toml = "^0.10.2"
+hypothesis = "^6.12.0"
+pytest-cov = "^2.11.1"
+Sphinx = "^4.0.0"
+rich = "^10.4.0"
+
+[tool.poe.tasks]
+docs = {cmd = "sphinx-build docs build", help = "Build documentation"}
+
+format = ["black", "isort"]
+black = {cmd = "black .", help = "Run black on codebase"}
+isort = {cmd = "isort . --profile=black", help = "Run isort on codebase"}
+mypy = {cmd = "mypy bloglang --strict", help = "Run MyPy on codebase"}
+pylint = {cmd = "pylint bloglang --fail-under=8", help = "Run Pylint on codebase"}
+
+_black = {"cmd" = "black bloglang --check"}
+_isort = {"cmd" = "isort bloglang --check --profile=black"}
+style = ["_isort", "_black"]
+codebase = ["pylint","mypy"]
+lint = ["style", "codebase"]
+
+test = {cmd = "pytest -vvv", help = "Run test suite"}
+cov = {cmd = "pytest -vvv --cov=bloglang --cov-report=html", help = "Run test suite with codecoverage (HTML format)"}
+codecov = {cmd = "pytest -vvv --cov=bloglang --cov-report=xml", help = "Run test suite with codecoverage (XML format)"}
+fcov = {cmd = "pytest -vvv --cov=bloglang --cov-report=html -n auto", help = "Run test suite with codecoverage in parallel. May decrease execution time"}
+ftest = {cmd = "pytest -vvv -n auto", help = "Run test suite in parallel. May decrease execution time"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
