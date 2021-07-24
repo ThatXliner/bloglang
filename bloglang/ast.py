@@ -1,5 +1,5 @@
 """AST nodes and components"""
-from typing import Dict, List, Type, Union, Optional
+from typing import Dict, List, Optional, Type, Union
 
 import attr
 

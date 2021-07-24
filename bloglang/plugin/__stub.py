@@ -1,6 +1,8 @@
-from . import hook
-from bloglang import ast
 from typing import Optional
+
+from bloglang import ast
+
+from . import hook
 
 
 @hook.spec(firstresult=True)

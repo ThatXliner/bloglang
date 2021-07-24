@@ -1,5 +1,6 @@
-from bloglang import parser
 import rich
+
+from bloglang import parser
 
 if __name__ == "__main__":
     doc = R"""\

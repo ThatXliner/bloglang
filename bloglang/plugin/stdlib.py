@@ -1,8 +1,11 @@
-from . import hook
-from bloglang import ast, parser
-from typing import Optional
 import textwrap
+from typing import Optional
+
 import attr
+
+from bloglang import ast, parser
+
+from . import hook
 
 
 @attr.s(init=False, auto_attribs=True)

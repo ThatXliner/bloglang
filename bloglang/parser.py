@@ -50,10 +50,10 @@ Large markup
 """
 import re
 import textwrap
-from typing import List, NamedTuple, Optional, Dict
+from typing import Dict, List, NamedTuple, Optional
 
-from bloglang import ast, plugin, escapes
-from bloglang.regexes import HEADER_RE, INLINE_RE, SPECDENT_START, FOOTNOTE_CONTENT, REs
+from bloglang import ast, escapes, plugin
+from bloglang.regexes import FOOTNOTE_CONTENT, HEADER_RE, INLINE_RE, SPECDENT_START, REs
 
 
 class InlineMarkup(NamedTuple):

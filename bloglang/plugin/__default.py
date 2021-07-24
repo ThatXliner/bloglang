@@ -1,7 +1,9 @@
-from . import hook
-from bloglang import ast
-from typing import Optional
 import textwrap
+from typing import Optional
+
+from bloglang import ast
+
+from . import hook
 
 
 @hook.impl(trylast=True)
