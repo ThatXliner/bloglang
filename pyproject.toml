@@ -47,7 +47,7 @@ _black = {"cmd" = "black bloglang --check"}
 _isort = {"cmd" = "isort bloglang --check --profile=black"}
 style = ["_isort", "_black"]
 codebase = ["pylint","mypy"]
-lint = ["style", "codebase"]
+lint = ["style"]
 
 test = {cmd = "pytest -vvv", help = "Run test suite"}
 cov = {cmd = "pytest -vvv --cov=bloglang --cov-report=html", help = "Run test suite with codecoverage (HTML format)"}
