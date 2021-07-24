@@ -242,13 +242,9 @@ def parse(doc: str) -> ast.Document:
             print(match)
             footnotes.update({match[1]: inline_markup_document(match[2])})
 
-        match = LIST_RE.match(line)
-        if match:
-            ...
-        else:
-            inline_markup = _parse_inline_markup(line)
-            tokens.extend(inline_markup.tokens)
-            footnotes.update({**inline_markup.footnotes, **footnotes})
+        inline_markup = _parse_inline_markup(line)
+        tokens.extend(inline_markup.tokens)
+        footnotes.update({**inline_markup.footnotes, **footnotes})
         tokens.append(ast.NEWLINE)
 
     if specdent_inner:  # Has content
